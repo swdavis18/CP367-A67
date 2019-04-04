@@ -1,0 +1,56 @@
+ARRAY=(31 28 31 30 31 30 31 31 30 31 30 31)
+
+answer = 0
+
+echo -n "Hello $USER"
+
+echo "The current date is `date`"
+
+day=$(date +%d)
+month=$(date +%m)
+year=$(date +%Y)
+
+echo -n "Enter your birth month (MM): "
+read bMonth
+echo -n "Enter your birth day (DD): "
+read bDay
+
+#Array starts at index 0, so assign i to month - 1
+i=$(($month - 1))
+
+#Loop until we are in the same month
+while (($i != $bMonth))
+	
+	#add the number of days in the current month to the answer, found in ARRAY
+	answer=$(($answer + ${ARRAY[$i]}))
+	
+	#If the current year is a leap year, and we are in february, add an extra day
+	if (($i==1 && $(($year%400)) == 0 && $(($year%100))!=0))
+	then
+		answer=$(($answer+1))
+	fi
+	
+	#incremnt i
+	$i=$(($i + 1))
+	
+	#set i to 0 if we go beyond 11, and add a year
+	if (($i > 11))
+	then
+		i=0
+		year=$(($year+1))
+	fi
+done
+
+# We're in the same month, add days if necessary (add 0 if we are on the same day)
+if ((day <= bDay))
+then
+	answer=$(($answer + $(($bDay - $day))))
+
+#subtract days if we need to
+else
+	answer=$(($answer - $(($day - $bDay))))
+fi
+
+echo "There are $answer days until your birthday!"
+
+
