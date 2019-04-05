@@ -2,7 +2,7 @@ ARRAY=(31 28 31 30 31 30 31 31 30 31 30 31)
 
 answer=0
 
-echo -n "Hello $USER"
+echo "Hello $USER"
 
 #No offset argument
 if ["$#" -eq 0]
@@ -18,17 +18,17 @@ else if ["$#" -gt 5475]
 then
 	echo "Offset is greater than 15 years, offsetting by exactly 15 years"
 	echo "Offset date is `date -d "+5475 days"`"
-	day=$((date -d "+5475 days" +%d))
-	month=$((date -d "+5475 days" +%m))
-	year=$((date -d "+5475 days" +%Y))
+	day=$(date -d "+5475 days" +%d)
+	month=$(date -d "+5475 days" +%m)
+	year=$(date -d "+5475 days" +%Y)
 
 #Any other offset
 else
 	echo "Date is offset by $1 days"
 	echo "Date is `date -d "+$1 days"`"
-	day=$((date -d "+$1 days" +%d))
-	month=$((date -d "+$1 days" +%m))
-	year=$((date -d "+$1 days" +%Y))
+	day=$(date -d "+$1 days" +%d)
+	month=$(date -d "+$1 days" +%m)
+	year=$(date -d "+$1 days" +%Y)
 fi	
 
 start=true
