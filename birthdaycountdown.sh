@@ -5,16 +5,16 @@ answer=0
 echo "Hello $USER"
 
 #No offset argument
-if ["$#" -eq 0]
+if [ "$#" -eq 0 ]
 then
 	echo "The current date is `date`"
 
 	day=$(date +%d)
 	month=$(date +%m)
 	year=$(date +%Y)
-	
+
 #Offset is greater than 15 years
-else if ["$#" -gt 5475]
+elif [ "$#" -gt 5475 ]
 then
 	echo "Offset is greater than 15 years, offsetting by exactly 15 years"
 	echo "Offset date is `date -d "+5475 days"`"
@@ -29,10 +29,29 @@ else
 	day=$(date -d "+$1 days" +%d)
 	month=$(date -d "+$1 days" +%m)
 	year=$(date -d "+$1 days" +%Y)
-fi	
+fi
 
-start=true
-while (($start != "stop"))
+#check and print festive messages
+
+if (($day == 31 && $month == 10))
+then
+	echo "Today is Halloween, have a spooky day!"
+elif (($day == 25 && $month == 12))
+then
+	echo "Today is Christmas, we wish you a merry Christmas and a happy new year!"
+
+elif (($day == 1 && $month == 7))
+then
+	echo "Today is Canada Day, Happy Canada Day!"
+elif (($day == 17 && $month == 3))
+then
+	echo "Today is St Patrick's day, don't drink too much! ;)"
+fi
+
+
+start="st"
+while [ "$start" != "stop" ]
+do
 	echo -n "Enter your birth month (MM): "
 	read bMonth
 	echo -n "Enter your birth day (DD): "
@@ -82,22 +101,6 @@ while (($start != "stop"))
 		echo "There are $answer days until your birthday!"
 	fi
 
-	#check and print festive messages
-
-	if (($day == 31 && $month == 10))
-	then 
-		echo "Today is Halloween, have a spooky day!"
-	elif (($day == 25 && $month == 12))
-	then
-			echo "Today is Christmas, we wish you a merry Christmas and a happy new year!"
-
-	elif (($day == 1 && $month == 7))
-	then
-			echo "Today is Canada Day, Happy Canada Day!"
-	elif (($day == 17 && $month == 3))
-	then
-			echo "Today is St Patrick's day, don't drink too much! ;)"
-	fi
 
 
 	#check if birthday falls on holiday
@@ -116,7 +119,7 @@ while (($start != "stop"))
 	then
 			echo "Your birthday falls on St Patrick's day, happy birthday lad/lassie"
 	fi
-	
+
 	echo -n "Type 'stop' to end program, enter any key input another birthday: "
 	read start
 done
