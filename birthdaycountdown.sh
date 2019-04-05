@@ -56,6 +56,10 @@ do
 	read bMonth
 	echo -n "Enter your birth day (DD): "
 	read bDay
+	echo -n "Enter your birth year (YYYY): "
+	read bYear
+	
+	age=`expr $year - $bYear`
 
 	#Array starts at index 0, so assign i to month - 1
 	i=$(($month - 1))
@@ -96,7 +100,7 @@ do
 	if ((0 == $answer))
 	then
 	# The current day is their birthday print message
-		echo "Happy birthday"
+		echo "Happy birthday, you are $age years old!"
 	else
 		echo "There are $answer days until your birthday!"
 	fi
