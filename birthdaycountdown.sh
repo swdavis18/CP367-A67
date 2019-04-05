@@ -117,7 +117,7 @@ while (($start != "stop"))
 			echo "Your birthday falls on St Patrick's day, happy birthday lad/lassie"
 	fi
 	
-	echo -n "Type 'stop' to end program, press enter to input another birthday: "
+	echo -n "Type 'stop' to end program, enter any key input another birthday: "
 	read start
 done
 
