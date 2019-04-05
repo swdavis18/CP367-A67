@@ -1,6 +1,6 @@
 ARRAY=(31 28 31 30 31 30 31 31 30 31 30 31)
 
-answer=0
+
 
 echo "Hello $USER"
 
@@ -52,6 +52,8 @@ fi
 start="st"
 while [ "$start" != "stop" ]
 do
+	answer=0
+	
 	echo -n "Enter your birth month (MM): "
 	read bMonth
 	echo -n "Enter your birth day (DD): "
