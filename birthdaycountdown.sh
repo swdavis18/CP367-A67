@@ -14,7 +14,7 @@ then
 	year=$(date +%Y)
 
 #Offset is greater than 15 years
-elif [ "$#" -gt 5475 ]
+elif [ "$1" -gt 5475 ]
 then
 	echo "Offset is greater than 15 years, offsetting by exactly 15 years"
 	echo "Offset date is `date -d "+5475 days"`"
@@ -126,7 +126,7 @@ do
 			echo "Your birthday falls on St Patrick's day, happy birthday lad/lassie"
 	fi
 
-	echo -n "Type 'stop' to end program, enter any key input another birthday: "
+	echo -n "Type 'stop' to end program, enter any key to input another birthday: "
 	read start
 done
 
